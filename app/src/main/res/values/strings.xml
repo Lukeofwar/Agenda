@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">Agenda</string>
+    <string name="string_titulo_main">Lista de Alunos</string>
+    <string name="string_hint_nome">Nome</string>
+    <string name="string_hint_telefone">Telefone</string>
+    <string name="string_hint_email">Email</string>
+    <string name="string_btn_salvar">Salvar</string>
+    <string name="string_msg_nome_email_vazio">Nome e Email devem ser informados!</string>
+    <string name="string_msg_salvo">Salvo!</string>
+    <string name="string_titulo_formulario">Novo Aluno</string>
 </resources>
