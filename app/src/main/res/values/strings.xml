@@ -7,5 +7,8 @@
     <string name="string_btn_salvar">Salvar</string>
     <string name="string_msg_nome_email_vazio">Nome e Email devem ser informados!</string>
     <string name="string_msg_salvo">Salvo!</string>
-    <string name="string_titulo_formulario">Novo Aluno</string>
+    <string name="string_titulo_formulario_insercao">Novo Aluno</string>
+    <string name="string_intent_alunoParaFormulario">alunoClicado</string>
+    <string name="string_titulo_formulario_edicao">Editar Aluno</string>
+    <string name="string_context_menu_remover">Remover</string>
 </resources>

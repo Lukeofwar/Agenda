@@ -2,15 +2,38 @@ package com.example.agenda.model;
 
 import androidx.annotation.NonNull;
 
-public class Aluno {
-    private final String nome;
-    private final String telefone;
-    private final String email;
+import java.io.Serializable;
+
+public class Aluno implements Serializable {
+    private int id;
+    private String nome;
+    private String telefone;
+    private String email;
 
     public Aluno(String nome, String telefone, String email) {
         this.nome = nome;
         this.telefone = telefone;
         this.email = email;
+    }
+
+    public Aluno() {
+
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public void setTelefone(String telefone) {
+        this.telefone = telefone;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getNome() {
@@ -25,9 +48,17 @@ public class Aluno {
         return email;
     }
 
+    public int getId() {
+        return id;
+    }
+
     @NonNull
     @Override
     public String toString() {
         return nome;
+    }
+
+    public boolean temIdValido() {
+        return id > 0;
     }
 }
