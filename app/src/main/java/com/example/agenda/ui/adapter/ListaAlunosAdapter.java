@@ -14,7 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ListaAlunosAdapter extends BaseAdapter {
-    Context context;
+    private final Context context;
     private List<Aluno> alunos = new ArrayList<>();
 
     public ListaAlunosAdapter(Context context) {
@@ -38,13 +38,21 @@ public class ListaAlunosAdapter extends BaseAdapter {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        View cardAluno = LayoutInflater.from(context).inflate(R.layout.item_aluno, parent, false);
+        View cardAluno = inflaCard(parent);
+        vinculaCard(position, cardAluno);
+        return cardAluno;
+
+    }
+
+    private void vinculaCard(int position, View cardAluno) {
         TextView tvNomeAluno = cardAluno.findViewById(R.id.item_aluno_nome);
         TextView tvTelefoneAluno = cardAluno.findViewById(R.id.item_aluno_telefone);
         tvNomeAluno.setText(alunos.get(position).getNome());
         tvTelefoneAluno.setText(alunos.get(position).getTelefone());
-        return cardAluno;
+    }
 
+    private View inflaCard(ViewGroup parent) {
+        return LayoutInflater.from(context).inflate(R.layout.item_aluno, parent, false);
     }
 
     public void remove(Aluno aluno) {
@@ -52,13 +60,9 @@ public class ListaAlunosAdapter extends BaseAdapter {
         notifyDataSetChanged();
     }
 
-    public void addAll(List<Aluno> alunos) {
+    public void atualiza(List<Aluno> alunos) {
+        this.alunos.clear();
         this.alunos.addAll(alunos);
-        notifyDataSetChanged();
-    }
-
-    public void clear() {
-        alunos.clear();
         notifyDataSetChanged();
     }
 }

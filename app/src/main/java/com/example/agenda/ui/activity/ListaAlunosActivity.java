@@ -29,12 +29,6 @@ public class ListaAlunosActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lista_alunos);
         setTitle(getString(R.string.string_titulo_main));
-        for (int i = 0; i < 10; i++) {
-            dao.salva(new Aluno("Joao", "91111-1111", "joao@gmail.com"));
-            dao.salva(new Aluno("Maria", "91111-1112", "maria@gmail.com"));
-            dao.salva(new Aluno("Arnaldo", "91111-1113", "naldo@gmail.com"));
-        }
-
         configuraFabPlus();
         configuraLista();
     }
@@ -88,7 +82,6 @@ public class ListaAlunosActivity extends AppCompatActivity {
 
     private void configuraAdapter(ListView listaDeAlunos) {
         adapter = new ListaAlunosAdapter(this);
-        adapter.addAll(dao.todos());
         listaDeAlunos.setAdapter(adapter);
 
     }
@@ -120,8 +113,7 @@ public class ListaAlunosActivity extends AppCompatActivity {
     }
 
     private void atualizaListaAlunos() {
-        adapter.clear();
-        adapter.addAll(dao.todos());
+        adapter.atualiza(dao.todos());
     }
 
 }
