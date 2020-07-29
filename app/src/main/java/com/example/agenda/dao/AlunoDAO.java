@@ -39,7 +39,7 @@ public class AlunoDAO {
     }
 
     public List<Aluno> todos() {
-        return new ArrayList<>(alunos);
+        return alunos;
     }
 
     public void remove(Aluno alunoClicadoRemocao) {

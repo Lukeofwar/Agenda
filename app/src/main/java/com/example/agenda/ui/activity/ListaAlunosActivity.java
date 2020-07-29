@@ -7,7 +7,6 @@ import android.view.ContextMenu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import androidx.annotation.NonNull;
@@ -17,12 +16,13 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.agenda.R;
 import com.example.agenda.dao.AlunoDAO;
 import com.example.agenda.model.Aluno;
+import com.example.agenda.ui.adapter.ListaAlunosAdapter;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 public class ListaAlunosActivity extends AppCompatActivity {
     private String TAG = "LOG_MAIN";
     private final AlunoDAO dao = new AlunoDAO();
-    private ArrayAdapter<Aluno> adapter;
+    private ListaAlunosAdapter adapter;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -30,9 +30,9 @@ public class ListaAlunosActivity extends AppCompatActivity {
         setContentView(R.layout.activity_lista_alunos);
         setTitle(getString(R.string.string_titulo_main));
         for (int i = 0; i < 10; i++) {
-        dao.salva(new Aluno("Joao", "91111-1111", "joao@gmail.com"));
-        dao.salva(new Aluno("Maria", "91111-1112", "maria@gmail.com"));
-        dao.salva(new Aluno("Arnaldo", "91111-1113", "naldo@gmail.com"));
+            dao.salva(new Aluno("Joao", "91111-1111", "joao@gmail.com"));
+            dao.salva(new Aluno("Maria", "91111-1112", "maria@gmail.com"));
+            dao.salva(new Aluno("Arnaldo", "91111-1113", "naldo@gmail.com"));
         }
 
         configuraFabPlus();
@@ -62,20 +62,6 @@ public class ListaAlunosActivity extends AppCompatActivity {
         registerForContextMenu(listaDeAlunos);
     }
 
-//    private void configuraListenerDeCliqueLongoPorItem(ListView listaDeAlunos) {
-//        listaDeAlunos.setOnItemLongClickListener(new ListView.OnItemLongClickListener() {
-//            @Override
-//            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
-//                Aluno alunoClicadoRemocao = (Aluno) parent.getItemAtPosition(position);
-//                Log.d(TAG, "onItemLongClick: " + position);
-//                removeAlunoDaListaEDao(alunoClicadoRemocao);
-////false->passa pro evento seguinte
-//// true->para nesse evento
-//                return false;
-//            }
-//        });
-//    }
-
     private void removeAlunoDaListaEDao(Aluno alunoClicadoRemocao) {
         dao.remove(alunoClicadoRemocao);
         adapter.remove(alunoClicadoRemocao);
@@ -101,9 +87,10 @@ public class ListaAlunosActivity extends AppCompatActivity {
     }
 
     private void configuraAdapter(ListView listaDeAlunos) {
-        adapter = new ArrayAdapter<>
-                (this, android.R.layout.simple_list_item_1);
+        adapter = new ListaAlunosAdapter(this);
+        adapter.addAll(dao.todos());
         listaDeAlunos.setAdapter(adapter);
+
     }
 
     @Override
@@ -118,7 +105,7 @@ public class ListaAlunosActivity extends AppCompatActivity {
         int itemId = item.getItemId();
         if (itemId == R.id.activity_lista_alunos_menu_item_remover) {
             AdapterView.AdapterContextMenuInfo menuInfo = (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();
-            Aluno alunoParaRemocao = adapter.getItem(menuInfo.position);
+            Aluno alunoParaRemocao = (Aluno) adapter.getItem(menuInfo.position);
             removeAlunoDaListaEDao(alunoParaRemocao);
         }
 
@@ -138,3 +125,18 @@ public class ListaAlunosActivity extends AppCompatActivity {
     }
 
 }
+
+
+//    private void configuraListenerDeCliqueLongoPorItem(ListView listaDeAlunos) {
+//        listaDeAlunos.setOnItemLongClickListener(new ListView.OnItemLongClickListener() {
+//            @Override
+//            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+//                Aluno alunoClicadoRemocao = (Aluno) parent.getItemAtPosition(position);
+//                Log.d(TAG, "onItemLongClick: " + position);
+//                removeAlunoDaListaEDao(alunoClicadoRemocao);
+////false->passa pro evento seguinte
+//// true->para nesse evento
+//                return false;
+//            }
+//        });
+//    }
