@@ -1,5 +1,6 @@
 package com.example.agenda.ui.activity;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -11,6 +12,7 @@ import android.widget.ListView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.agenda.R;
@@ -94,15 +96,30 @@ public class ListaAlunosActivity extends AppCompatActivity {
     }
 
     @Override
-    public boolean onContextItemSelected(@NonNull MenuItem item) {
+    public boolean onContextItemSelected(@NonNull final MenuItem item) {
         int itemId = item.getItemId();
         if (itemId == R.id.activity_lista_alunos_menu_item_remover) {
-            AdapterView.AdapterContextMenuInfo menuInfo = (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();
-            Aluno alunoParaRemocao = (Aluno) adapter.getItem(menuInfo.position);
-            removeAlunoDaListaEDao(alunoParaRemocao);
+            mostraDialogExclusaoAluno(item);
         }
 
         return super.onContextItemSelected(item);
+    }
+
+    private void mostraDialogExclusaoAluno(@NonNull final MenuItem item) {
+        new AlertDialog.Builder(this)
+                .setTitle("Removendo Aluno")
+                .setMessage("Tem certeza que deseja remover?")
+                .setPositiveButton("Sim", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        AdapterView.AdapterContextMenuInfo menuInfo = (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();
+                        Aluno alunoParaRemocao = (Aluno) adapter.getItem(menuInfo.position);
+                        removeAlunoDaListaEDao(alunoParaRemocao);
+
+                    }
+                })
+                .setNegativeButton("Nao", null)
+                .show();
     }
 
     @Override
