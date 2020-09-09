@@ -15,6 +15,7 @@ import java.util.List;
 
 public class ListaAlunosAdapter extends BaseAdapter {
     private final Context context;
+    @SuppressWarnings("CanBeFinal")
     private List<Aluno> alunos = new ArrayList<>();
 
     public ListaAlunosAdapter(Context context) {

@@ -21,7 +21,7 @@ public class AlunoDAO {
     }
 
     public void edita(Aluno aluno) {
-        Aluno alunoEncontrado = null;
+        Aluno alunoEncontrado;
         alunoEncontrado = buscaAlunoPeloId(aluno);
         if (alunoEncontrado != null) {
             int posicaoALunoEncontrado = alunos.indexOf(alunoEncontrado);
