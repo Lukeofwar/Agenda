@@ -30,14 +30,11 @@ public class ListaAlunosView {
         new AlertDialog.Builder(context)
                 .setTitle("Removendo Aluno")
                 .setMessage("Tem certeza que deseja remover?")
-                .setPositiveButton("Sim", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        AdapterView.AdapterContextMenuInfo menuInfo = (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();
-                        Aluno alunoParaRemocao = (Aluno) adapter.getItem(menuInfo.position);
-                        removeAlunoDaListaEDao(alunoParaRemocao);
+                .setPositiveButton("Sim", (dialog, which) -> {
+                    AdapterView.AdapterContextMenuInfo menuInfo = (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();
+                    Aluno alunoParaRemocao = (Aluno) adapter.getItem(menuInfo.position);
+                    removeAlunoDaListaEDao(alunoParaRemocao);
 
-                    }
                 })
                 .setNegativeButton("Nao", null)
                 .show();

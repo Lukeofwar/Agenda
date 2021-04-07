@@ -37,12 +37,7 @@ public class ListaAlunosActivity extends AppCompatActivity {
 
     private void configuraFabPlus() {
         FloatingActionButton btnPlus = findViewById(R.id.activity_lista_alunos_fab_plus);
-        btnPlus.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                intentParaFormularioInsercao();
-            }
-        });
+        btnPlus.setOnClickListener(v -> intentParaFormularioInsercao());
     }
 
     private void intentParaFormularioInsercao() {
@@ -60,13 +55,10 @@ public class ListaAlunosActivity extends AppCompatActivity {
 
 
     private void configuraListenerDeClickPorItem(ListView listaDeAlunos) {
-        listaDeAlunos.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Aluno alunoClicadoEdicao = (Aluno) parent.getItemAtPosition(position);
-                Log.d(TAG, "onItemClick: " + alunoClicadoEdicao.getNome());
-                intentParaFormularioEdicao(alunoClicadoEdicao);
-            }
+        listaDeAlunos.setOnItemClickListener((parent, view, position, id) -> {
+            Aluno alunoClicadoEdicao = (Aluno) parent.getItemAtPosition(position);
+            Log.d(TAG, "onItemClick: " + alunoClicadoEdicao.getNome());
+            intentParaFormularioEdicao(alunoClicadoEdicao);
         });
     }
 
