@@ -5,4 +5,3 @@ Agenda de contatos em app android
 Todo mundo sabe que a agenda de contatos é uma bagunça
 este projeto visa facilitar a arrumação dos cotatos por nomes
 
-![giphy](https://github.com/Lukeofwar/Agenda/blob/master/giphy.gif)
