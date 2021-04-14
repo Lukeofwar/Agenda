@@ -1,7 +1,6 @@
 package com.example.agenda.ui;
 
 import android.content.Context;
-import android.content.DialogInterface;
 import android.view.MenuItem;
 import android.widget.AdapterView;
 import android.widget.ListView;
