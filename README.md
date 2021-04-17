@@ -1,4 +1,4 @@
-# Diário
+# Diário Dinâmico
 
 
 
