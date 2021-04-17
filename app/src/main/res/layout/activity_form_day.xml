@@ -14,8 +14,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="8dp"
-            android:hint="@string/string_hint_nome"
-            android:inputType="textCapWords"
+            android:hint="@string/string_hint_day_month"
+            android:inputType="text"
             android:importantForAutofill="no" />
 
         <EditText
@@ -23,8 +23,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="8dp"
-            android:hint="@string/string_hint_telefone"
-            android:inputType="phone"
+            android:hint="@string/string_hint_day_week"
+            android:inputType="text"
             android:importantForAutofill="no" />
 
         <EditText
@@ -32,8 +32,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="8dp"
-            android:hint="@string/string_hint_email"
-            android:inputType="textEmailAddress"
+            android:hint="@string/string_hint_day_annotation"
+            android:inputType="text"
             android:importantForAutofill="no" />
 
     </LinearLayout>
