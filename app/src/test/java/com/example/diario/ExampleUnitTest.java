@@ -1,4 +1,4 @@
-package com.example.agenda;
+package com.example.diario;
 
 import org.junit.Test;
 

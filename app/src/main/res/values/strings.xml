@@ -1,13 +1,13 @@
 <resources>
-    <string name="app_name">Agenda</string>
-    <string name="string_titulo_main">Lista de Alunos</string>
-    <string name="string_hint_nome">Nome</string>
-    <string name="string_hint_telefone">Telefone</string>
-    <string name="string_hint_email">Email</string>
-    <string name="string_titulo_formulario_insercao">Novo Aluno</string>
-    <string name="string_intent_alunoParaFormulario">alunoClicado</string>
-    <string name="string_titulo_formulario_edicao">Editar Aluno</string>
-    <string name="string_menu_salvar">Salvar</string>
-    <string name="string_menu_remover">Remover</string>
+    <string name="app_name">Diario</string>
+    <string name="string_title_main">My Days</string>
+    <string name="string_hint_day_month">Day Month</string>
+    <string name="string_hint_day_week">Day Week</string>
+    <string name="string_hint_day_annotation">Annotation</string>
+    <string name="string_title_form_insertion">New Day</string>
+    <string name="string_intent_day_to_form">dayClicked</string>
+    <string name="string_titulo_form_edit">Edit Day</string>
+    <string name="string_menu_save">Save</string>
+    <string name="string_menu_remove">Remove</string>
     <string name="sreing_menu_teste">Teste</string>
 </resources>
