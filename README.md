@@ -1,4 +1,4 @@
- head
+
 # Diário Dinâmico.
  Projeto de diário em app android
 
